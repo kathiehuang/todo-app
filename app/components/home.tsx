@@ -13,30 +13,50 @@ export default function HomePage() {
         getTodos();
     }, [])
 
+
     const getTodos = async() => {
         try {
             const response = await axios.get("/api/todos")
+            console.log("getting todos")
+            console.log(response)
             setTodos(response.data)
         } catch (error) {
             console.error("Error fetching todos: ", error)
         }
     }
 
-    const addTodo = (e: React.FormEvent) => {
+    const addTodo = async (e: React.FormEvent) => {
         e.preventDefault();
         if (!input) return;
-        setTodos([...todos, { id: Date.now(), text: input, done: false }]);
-        setInput("");
+        try {
+            const data = {
+                id: Date.now(),
+                text: input,
+                done: false,
+            }
+            const response = await axios.post("/api/todos", data)
+            console.log("adding todo")
+            setTodos([...todos, response.data.newTodo])
+            setInput("");
+        } catch (error) {
+            console.log("Error adding todo: ", error)
+        }
     };
 
-    const deleteTodo = (id: number) => {
-        setTodos(todos.filter((todo) => todo.id !== id));
+    const deleteTodo = async (id: number) => {
+        try {
+            await axios.delete('/api/todos/${id}')
+            setTodos(todos.filter((todo) => todo.id !== id));
+        } catch (error) {
+            console.log("Error deleting todo: ", error)
+        }
+        // setTodos(todos.filter((todo) => todo.id !== id));
     };
 
     const markTodo = (id: number) => {
-        setTodos(
-            todos.map((todo) => (todo.id === id ? { ...todo, done: !todo.done } : todo))
-        );
+        // setTodos(
+        //     todos.map((todo) => (todo.id === id ? { ...todo, done: !todo.done } : todo))
+        // );
     };
 
     return (
