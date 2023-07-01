@@ -8,14 +8,6 @@
   --background-end-rgb: 255, 255, 255;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
-
 body {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
@@ -24,4 +16,40 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.todo-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  background-color: #f0f0f0;
+  margin-bottom: 0.5rem;
+  border-radius: 5px;
+}
+
+.todo-item.done {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+.container {
+  max-width: 800px;
+  margin: 2rem auto;
+}
+
+
+button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+button.delete {
+  color: red;
+  margin-left: 1rem;
 }
