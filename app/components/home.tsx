@@ -22,16 +22,11 @@ export default function HomePage() {
         }
     }
 
-    const addTodo = async (e: React.FormEvent) => {
+    const addTodo = (e: React.FormEvent) => {
         e.preventDefault();
         if (!input) return;
-        try {
-            const response = await axios.post("/todos", { text: input });
-            setTodos([...todos, response.data]);
-            setInput("");
-        } catch (error) {
-            console.error("Error adding todo:", error);
-        }
+        setTodos([...todos, { id: Date.now(), text: input, done: false }]);
+        setInput("");
     };
 
     const deleteTodo = (id: number) => {
