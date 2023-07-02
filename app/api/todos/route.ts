@@ -14,9 +14,9 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ newTodo })
 }
 
-export async function DELETE(req: NextRequest) {
-    console.log(req)
-    const id = parseInt(req.params.id, 10);
-    todos = todos.filter((todo) => todo.id !== id)
-    return NextResponse.json({ id });
-}
+// export async function DELETE(req: NextRequest) {
+//     console.log(req)
+//     const id = parseInt(req.params.id, 10);
+//     todos = todos.filter((todo) => todo.id !== id)
+//     return NextResponse.json({ id });
+// }

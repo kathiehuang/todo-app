@@ -44,13 +44,13 @@ export default function HomePage() {
     };
 
     const deleteTodo = async (id: number) => {
-        try {
-            await axios.delete('/api/todos/${id}')
-            setTodos(todos.filter((todo) => todo.id !== id));
-        } catch (error) {
-            console.log("Error deleting todo: ", error)
-        }
-        // setTodos(todos.filter((todo) => todo.id !== id));
+        // try {
+        //     await axios.delete('/api/todos/${id}')
+        //     setTodos(todos.filter((todo) => todo.id !== id));
+        // } catch (error) {
+        //     console.log("Error deleting todo: ", error)
+        // }
+        setTodos(todos.filter((todo) => todo.id !== id));
     };
 
     const markTodo = (id: number) => {
