@@ -54,10 +54,15 @@ export default function HomePage() {
         }
     };
 
-    const markTodo = (id: number) => {
-        // setTodos(
-        //     todos.map((todo) => (todo.id === id ? { ...todo, done: !todo.done } : todo))
-        // );
+    const markTodo = async (id: number) => {
+        try {
+            const response = await axios.patch(`api/todos?id=${id}`)
+            setTodos(
+                todos.map((todo) => (todo.id === id ? { ...todo, done: !todo.done } : todo))
+            );
+        } catch (error) {
+            console.log("Error marking todo as done: ", error)
+        }
     };
 
     return (
