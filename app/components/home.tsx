@@ -13,6 +13,10 @@ export default function HomePage() {
         getTodos();
     }, [])
 
+    useEffect(() => {
+        getTodos();
+      }, [todos]); 
+
 
     const getTodos = async() => {
         try {
@@ -30,9 +34,7 @@ export default function HomePage() {
         if (!input) return;
         try {
             const data = {
-                id: Date.now(),
                 text: input,
-                done: false,
             }
             const response = await axios.post("/api/todos", data)
             console.log("adding todo")
@@ -44,13 +46,12 @@ export default function HomePage() {
     };
 
     const deleteTodo = async (id: number) => {
-        // try {
-        //     await axios.delete('/api/todos/${id}')
-        //     setTodos(todos.filter((todo) => todo.id !== id));
-        // } catch (error) {
-        //     console.log("Error deleting todo: ", error)
-        // }
-        setTodos(todos.filter((todo) => todo.id !== id));
+        try {
+            const response = await axios.delete(`/api/todos?id=${id}`)
+            setTodos(todos.filter((todo) => todo.id !== id));
+        } catch (error) {
+            console.log("Error deleting todo: ", error)
+        }
     };
 
     const markTodo = (id: number) => {

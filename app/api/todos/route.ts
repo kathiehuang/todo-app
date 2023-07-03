@@ -7,16 +7,21 @@ export async function GET() {
 }
 
 export async function POST(req: NextRequest) {
-    const { text } = await req.json()
+    const { text } = await req.json() // gets text property from JSON payload of request
     const newTodo = { id: Date.now(), text, done: false };
     todos.push(newTodo);
     console.log(todos)
     return NextResponse.json({ newTodo })
 }
 
-// export async function DELETE(req: NextRequest) {
-//     console.log(req)
-//     const id = parseInt(req.params.id, 10);
-//     todos = todos.filter((todo) => todo.id !== id)
-//     return NextResponse.json({ id });
-// }
+export async function DELETE(req: NextRequest) {
+    const { searchParams } = new URL(req.url)
+    const id = searchParams.get('id')
+    if (id === null) {
+        return NextResponse.json({ error: 'Could not find todo to delete' }, { status: 400 });
+    }
+    console.log("in backend id")
+    console.log(id)
+    todos = todos.filter((todo) => todo.id !== +id)
+    return NextResponse.json({ id });
+}
