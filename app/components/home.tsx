@@ -1,58 +1,50 @@
-'use client';
+'use client'
 
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import '@fontsource/open-sans';
 import '@fontsource/roboto';
 
 export default function HomePage() {
-    const [todos, setTodos] = useState<{ id: number; text: string; done: boolean }[]>([]);
-    const [input, setInput] = useState("");
+  const [todos, setTodos] = useState<{ id: number; text: string; done: boolean }[]>([]);
+  const [input, setInput] = useState("");
 
-    useEffect(() => {
-        getTodos();
-    }, [])
+  useEffect(() => {
+    getTodos();
+  }, []);
 
-    useEffect(() => {
-        getTodos();
-      }, [todos]); 
-
-
-    const getTodos = async() => {
-        try {
-            const response = await axios.get("/api/todos")
-            console.log("getting todos")
-            console.log(response)
-            setTodos(response.data)
-        } catch (error) {
-            console.error("Error fetching todos: ", error)
-        }
+  const getTodos = async () => {
+    try {
+      const response = await axios.get("/api/todos");
+      setTodos(response.data);
+    } catch (error) {
+      console.error("Error fetching todos: ", error);
     }
+  };
 
-    const addTodo = async (e: React.FormEvent) => {
-        e.preventDefault();
-        if (!input) return;
-        try {
-            const data = {
-                text: input,
-            }
-            const response = await axios.post("/api/todos", data)
-            console.log("adding todo")
-            setTodos([...todos, response.data.newTodo])
-            setInput("");
-        } catch (error) {
-            console.log("Error adding todo: ", error)
-        }
-    };
+  const addTodo = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!input) return;
+    try {
+      const data = {
+        text: input,
+      };
+      const response = await axios.post("/api/todos", data);
+      setTodos([...todos, response.data.newTodo]);
+      setInput("");
+    } catch (error) {
+      console.log("Error adding todo: ", error);
+    }
+  };
 
-    const deleteTodo = async (id: number) => {
-        try {
-            const response = await axios.delete(`/api/todos?id=${id}`)
-            setTodos(todos.filter((todo) => todo.id !== id));
-        } catch (error) {
-            console.log("Error deleting todo: ", error)
-        }
-    };
+  const deleteTodo = async (id: number) => {
+    try {
+      await axios.delete(`/api/todos?id=${id}`);
+      setTodos(todos.filter((todo) => todo.id !== id));
+    } catch (error) {
+      console.log("Error deleting todo: ", error);
+    }
+  };
 
     const markTodo = async (id: number) => {
         try {

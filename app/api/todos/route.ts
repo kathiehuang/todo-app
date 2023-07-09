@@ -1,8 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { PrismaClient } from '@prisma/client'
 
-// let todos = [{ id: 1, text: "wash dishes", done: false }]
-
 const prisma = new PrismaClient()
 
 export async function GET() {
@@ -21,17 +19,23 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ newTodo })
 }
 
-// export async function DELETE(req: NextRequest) {
-//     const { searchParams } = new URL(req.url)
-//     const id = searchParams.get('id')
-//     if (id === null) {
-//         return NextResponse.json({ error: 'Could not find todo to delete' }, { status: 400 });
-//     }
-//     console.log("in backend id")
-//     console.log(id)
-//     todos = todos.filter((todo) => todo.id !== +id)
-//     return NextResponse.json({ id });
-// }
+export async function DELETE(req: NextRequest) {
+    const { searchParams } = new URL(req.url)
+    const id = searchParams.get('id')
+    if (id === null) {
+        return NextResponse.json({ error: 'Could not find todo to delete' }, { status: 400 });
+    }
+    console.log("in backend id")
+    console.log(id)
+    try {
+        const deletedTodo = await prisma.todo.delete({
+            where: { id: Number(id) },
+        })
+        return NextResponse.json({ id: deletedTodo.id })
+    } catch (error) {
+        return NextResponse.json({ error: 'Could not delete todo' }, { status: 500 })
+    }
+}
 
 // export async function PATCH(req: NextRequest) {
 //     const { searchParams } = new URL(req.url)
