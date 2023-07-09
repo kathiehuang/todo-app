@@ -37,12 +37,25 @@ export async function DELETE(req: NextRequest) {
     }
 }
 
-// export async function PATCH(req: NextRequest) {
-//     const { searchParams } = new URL(req.url)
-//     const id = searchParams.get('id')
-//     if (id === null) {
-//         return NextResponse.json({ error: 'Could not find todo' }, { status: 400 });
-//     }
-//     todos = todos.map((todo) => (todo.id === +id ? { ...todo, done: !todo.done } : todo))
-//     return NextResponse.json({ id })
-// }
+export async function PATCH(req: NextRequest) {
+    const { searchParams } = new URL(req.url)
+    const id = searchParams.get('id')
+    if (id === null) {
+        return NextResponse.json({ error: 'Could not find todo' }, { status: 400 });
+    }
+    try {
+        const existingTodo = await prisma.todo.findUnique({
+            where: { id: Number(id) },
+          });
+          if (!existingTodo) {
+            return NextResponse.json({ error: 'Could not find todo' }, { status: 404 });
+          }
+        const updatedTodo = await prisma.todo.update({
+            where: { id: Number(id) },
+            data: { done: !existingTodo.done },
+        })
+        return NextResponse.json({ id: updatedTodo.id })
+    } catch (error) {
+        return NextResponse.json({ error: 'Could not update todo' }, { status: 500 });
+    }
+}
