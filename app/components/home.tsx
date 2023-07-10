@@ -60,19 +60,19 @@ export default function HomePage() {
     return (
         <div className="min-h-screen flex items-center justify-center pb-28">
             <div className="rounded-lg bg-white shadow-lg p-8">
-                <h1 className="text-2xl text-center mb-6 font-sans font-bold text-emerald-700">to-do app</h1>
+                <h1 className="text-2xl text-center mb-6 font-sans font-bold text-sky-700">to-do app</h1>
                 <form onSubmit={addTodo} className="mb-4">
                     <div className="flex">
                         <input
                             type="text"
                             value={input}
                             onChange={(e) => setInput(e.target.value)}
-                            className="flex-grow px-4 py-2 border border-gray-00 rounded focus:outline-none focus:ring-1 mx-2 focus:ring-emerald-500"
+                            className="flex-grow px-4 py-2 border border-gray-00 rounded focus:outline-none focus:ring-1 mx-2 focus:ring-sky-500"
                             placeholder="add a todo"
                         />
                         <button
                             type="submit"
-                            className="px-4 py-2 bg-emerald-500 text-white rounded focus:outline-none hover:bg-emerald-600 transition duration-200"
+                            className="px-4 py-2 bg-sky-400 text-white rounded focus:outline-none hover:bg-sky-600 transition duration-200"
                         >
                             add
                         </button>
@@ -82,7 +82,7 @@ export default function HomePage() {
                     {todos.map((todo) => (
                         <li
                             key={todo.id}
-                            className={`flex items-center justify-between p-2 border rounded-md transition duration-200 ${todo.done ? "bg-green-50" : ""
+                            className={`flex items-center justify-between p-2 border rounded-md transition duration-200 ${todo.done ? "bg-sky-50" : ""
                                 }`}
                         >
                             <div className="flex items-center">
