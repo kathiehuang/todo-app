@@ -3,9 +3,26 @@ import { PrismaClient } from '@prisma/client'
 
 const prisma = new PrismaClient()
 
-export async function GET() {
-    const todos = await prisma.todo.findMany();
-    return NextResponse.json(todos);
+export async function GET(req: NextRequest) {
+    const { searchParams } = new URL(req.url)
+    const doneParam = searchParams.get('done')
+    let todos
+    try {
+        if (doneParam === 'true') {
+            todos = await prisma.todo.findMany({
+                where: { done: true }
+            })
+        } else if (doneParam === 'false') {
+            todos = await prisma.todo.findMany({
+                where: { done: false }
+            })
+        } else {
+            todos = await prisma.todo.findMany()
+        }
+        return NextResponse.json(todos);
+    } catch (error) {
+        return NextResponse.json({ error: 'Could not fetch todos' }, { status: 500 });
+    }
 }
 
 export async function POST(req: NextRequest) {
@@ -59,3 +76,8 @@ export async function PATCH(req: NextRequest) {
         return NextResponse.json({ error: 'Could not update todo' }, { status: 500 });
     }
 }
+
+// GET /api/todos/completed: Retrieve only the completed todo items.
+
+
+// GET /api/todos/incomplete: Retrieve only the incomplete todo items.

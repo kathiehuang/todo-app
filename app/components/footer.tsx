@@ -13,7 +13,7 @@ export default function Footer() {
                         variant="small"
                         className="mb-4 text-center font-normal text-stone-800 md:mb-0 font-mono opacity-60"
                     >
-                        &copy; {currentYear} <a href="mailto: kathiehuang@hotmail.com" target="_blank" className="hover:opacity-100 hover:text-teal-800 transition-opacity">Kathie Huang</a>. All
+                        &copy; {currentYear} <a href="http://kathiehuang.com/" target="_blank" className="hover:opacity-100 hover:text-teal-800 transition-opacity">Kathie Huang</a>. All
                         Rights Reserved.
                     </Typography>
                     <div className="flex gap-4 text-blue-gray-900 sm:justify-center">
