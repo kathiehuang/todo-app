@@ -12,22 +12,23 @@ export default function Footer() {
                     <Typography
                         variant="small"
                         className="mb-4 text-center font-normal text-stone-800 md:mb-0 font-mono opacity-60"
+                        {...({} as any)}
                     >
                         &copy; {currentYear} <a href="http://kathiehuang.com/" target="_blank" className="hover:opacity-100 hover:text-teal-800 transition-opacity">Kathie Huang</a>. All
                         Rights Reserved.
                     </Typography>
                     <div className="flex gap-4 text-blue-gray-900 sm:justify-center">
-                        <Typography as="a" href="mailto: kathiehuang@hotmail.com" target="_blank" className="opacity-80 transition-opacity hover:opacity-100  hover:text-teal-800">
+                        <Typography as="a" href="mailto: kathiehuang@hotmail.com" target="_blank" className="opacity-80 transition-opacity hover:opacity-100  hover:text-teal-800" {...({} as any)}>
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                 <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline>
                             </svg>
                         </Typography>
-                        <Typography as="a" href="https://www.linkedin.com/in/kathie-huang" target="_blank" className="opacity-80 transition-opacity hover:opacity-100  hover:text-teal-800">
+                        <Typography as="a" href="https://www.linkedin.com/in/kathie-huang" target="_blank" className="opacity-80 transition-opacity hover:opacity-100  hover:text-teal-800" {...({} as any)}>
                             <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                                 <path d="M22.23 0H1.77C.8 0 0 .77 0 1.72v20.56C0 23.23.8 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.72V1.72C24 .77 23.2 0 22.23 0zM7.27 20.1H3.65V9.24h3.62V20.1zM5.47 7.76h-.03c-1.22 0-2-.83-2-1.87 0-1.06.8-1.87 2.05-1.87 1.24 0 2 .8 2.02 1.87 0 1.04-.78 1.87-2.05 1.87zM20.34 20.1h-3.63v-5.8c0-1.45-.52-2.45-1.83-2.45-1 0-1.6.67-1.87 1.32-.1.23-.11.55-.11.88v6.05H9.28s.05-9.82 0-10.84h3.63v1.54a3.6 3.6 0 0 1 3.26-1.8c2.39 0 4.18 1.56 4.18 4.89v6.21z" />
                             </svg>
                         </Typography>
-                        <Typography as="a" href="https://github.com/kathiehuang" target="_blank" className="opacity-80 transition-opacity hover:opacity-100  hover:text-teal-800">
+                        <Typography as="a" href="https://github.com/kathiehuang" target="_blank" className="opacity-80 transition-opacity hover:opacity-100  hover:text-teal-800" {...({} as any)}>
                             <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                                 <path
                                     fillRule="evenodd"
@@ -36,12 +37,12 @@ export default function Footer() {
                                 />
                             </svg>
                         </Typography>
-                        <Typography as="a" href="https://open.spotify.com/user/1233633660?si=e5cb7cf939d04f5b" target="_blank" className="opacity-80 transition-opacity hover:opacity-100  hover:text-teal-800">
+                        <Typography as="a" href="https://open.spotify.com/user/1233633660?si=e5cb7cf939d04f5b" target="_blank" className="opacity-80 transition-opacity hover:opacity-100  hover:text-teal-800" {...({} as any)}>
                             <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                                 <path d="M12 0a12 12 0 1 0 0 24 12 12 0 0 0 0-24zm4.87 17.66c-.2 0-.33-.06-.51-.18a12.03 12.03 0 0 0-6.2-1.6c-1.3 0-2.59.16-3.8.42-.19.04-.44.11-.59.11a.75.75 0 0 1-.75-.75c0-.5.29-.75.65-.82 1.48-.34 2.96-.53 4.49-.53 2.62 0 4.97.6 6.98 1.8.3.18.47.36.47.8 0 .43-.35.75-.74.75zm1.3-3.17c-.25 0-.42-.1-.6-.21a15.22 15.22 0 0 0-7.62-1.93c-1.51 0-2.83.21-3.91.5-.24.07-.37.14-.59.14a.94.94 0 0 1-.93-.95c0-.5.24-.86.74-1C6.61 10.67 8 10.4 10 10.4c3.15 0 6.18.78 8.57 2.2.4.24.55.53.55.96 0 .52-.41.94-.93.94zm1.5-3.7c-.25 0-.4-.06-.62-.18-2.18-1.3-5.55-2.02-8.8-2.02-1.63 0-3.29.16-4.8.57-.17.05-.4.14-.62.14-.64 0-1.13-.51-1.13-1.15 0-.65.4-1.02.84-1.15 1.71-.5 3.62-.74 5.7-.74 3.52 0 7.23.73 9.94 2.32.36.2.62.52.62 1.09 0 .65-.53 1.12-1.14 1.12z" />
                             </svg>
                         </Typography>
-                        <Typography as="a" href="https://instagram.com/kathiehuangg" target="_blank" className="opacity-80 transition-opacity hover:opacity-100  hover:text-teal-800">
+                        <Typography as="a" href="https://instagram.com/kathiehuangg" target="_blank" className="opacity-80 transition-opacity hover:opacity-100  hover:text-teal-800" {...({} as any)}>
                             <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                                 <path
                                     fillRule="evenodd"
