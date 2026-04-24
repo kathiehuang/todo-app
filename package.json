@@ -22,7 +22,7 @@
     "axios": "^1.15.0",
     "eslint": "8.43.0",
     "eslint-config-next": "15.5.2",
-    "next": "15.5.14",
+    "next": "15.5.15",
     "next-auth": "^4.22.1",
     "next-sitemap": "^4.1.8",
     "react": "19.1.1",
